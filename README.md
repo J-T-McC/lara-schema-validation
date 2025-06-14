@@ -9,7 +9,7 @@ This package leverages [Opis JSON Schema](https://opis.io/json-schema/) for sche
 Install the package via Composer:
 
 ```bash
-composer require jtmcc/lara-schema-validation
+composer require --dev jtmcc/lara-schema-validation
 ```
 
 ## Usage

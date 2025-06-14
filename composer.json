@@ -1,6 +1,6 @@
 {
     "name": "jtmcc/lara-schema-validation",
-    "description": "Validate laravel json responses against JSON Schemas",
+    "description": "Validate laravel json responses against JSON Schemas in pest or phpunit",
     "type": "library",
     "license": "MIT",
     "autoload": {
