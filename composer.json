@@ -19,7 +19,9 @@
     },
     "require-dev": {
         "pestphp/pest": "^3.8",
-        "orchestra/testbench": "^10.3"
+        "orchestra/testbench": "^10.3",
+        "laravel/pint": "^1.22",
+        "phpstan/phpstan": "^2.1"
     },
     "config": {
         "allow-plugins": {
@@ -57,6 +59,12 @@
         "test": [
             "@clear",
             "@php vendor/bin/pest"
+        ],
+        "pint": [
+            "@php vendor/bin/pint --preset laravel"
+        ],
+        "phpstan": [
+            "@php vendor/bin/phpstan analyse src --level 6 --memory-limit=512M"
         ]
     }
 }

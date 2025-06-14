@@ -55,16 +55,16 @@ trait StubHelper
                 ? $relation->getChild()
                 : null;
 
-            if (!class_exists($relatedClass)) {
+            if (! class_exists($relatedClass)) {
                 return;
             }
 
             if (is_array($value) && array_is_list($value)) {
                 // Handle hasMany-style relation (array of models)
-                $this->{$key} = Collection::make($value)->map(fn($item) => (new $relatedClass())->setFixture($item)->hydrateFromFixture());
+                $this->{$key} = Collection::make($value)->map(fn ($item) => (new $relatedClass)->setFixture($item)->hydrateFromFixture());
             } elseif (is_array($value)) {
                 // Handle hasOne-style relation
-                $this->{$key} = (new $relatedClass())->setFixture($value)->hydrateFromFixture();
+                $this->{$key} = (new $relatedClass)->setFixture($value)->hydrateFromFixture();
             }
 
             return;

@@ -5,7 +5,6 @@ namespace Tests;
 use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Routing\Router;
 use Illuminate\Support\Facades\Route;
-
 use Orchestra\Testbench\Concerns\WithWorkbench;
 use Workbench\App\Http\Controllers\Api\CommentController;
 use Workbench\App\Http\Controllers\Api\PostController;
@@ -16,13 +15,13 @@ abstract class TestCase extends \Orchestra\Testbench\TestCase
 {
     use WithWorkbench;
 
-    public const string SCHEMA_ROOT = __DIR__ . '/schemas/';
+    public const string SCHEMA_ROOT = __DIR__.'/schemas/';
 
     protected function setUp(): void
     {
         parent::setUp();
 
-        config()->set('lara-schema-validation.schemas', __DIR__ . '/schemas/');
+        config()->set('lara-schema-validation.schemas', __DIR__.'/schemas/');
     }
 
     protected function defineDatabaseMigrations(): void
@@ -35,8 +34,7 @@ abstract class TestCase extends \Orchestra\Testbench\TestCase
     /**
      * Define routes setup.
      *
-     * @param Router $router
-     * @return void
+     * @param  Router  $router
      */
     protected function defineRoutes($router): void
     {

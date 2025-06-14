@@ -12,7 +12,7 @@ class CommentController extends BaseController
 {
     public function index(Request $request): AnonymousResourceCollection
     {
-        $type = match($request->input('type', 'all')) {
+        $type = match ($request->input('type', 'all')) {
             'all' => 'get',
             'paginate' => 'paginate',
             'simplePaginate' => 'simplePaginate',

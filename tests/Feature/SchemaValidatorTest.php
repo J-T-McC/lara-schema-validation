@@ -14,7 +14,7 @@ test('it can validate index', function (string $type) {
 
     // Act
     $results = $this->getJson(route('api.posts.index'), [
-        'type' => $type
+        'type' => $type,
     ]);
 
     // Assert
@@ -57,7 +57,7 @@ test('it fails on invalid results and formats the error', function () {
         // Top-level structure
         expect($message)
             // Context
-            ->toContain('JSON schema validation failed at /tests/Feature/ValidatesResponseJsonTest.php:')
+            ->toContain('JSON schema validation failed at /tests/Feature/SchemaValidatorTest.php:')
             ->toContain('tests/schemas/post.json')
 
             // Root-level schema error

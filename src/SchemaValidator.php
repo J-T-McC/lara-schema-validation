@@ -9,19 +9,30 @@ use Opis\JsonSchema\CompliantValidator;
 use Opis\JsonSchema\Errors\ErrorFormatter;
 use PHPUnit\Framework\AssertionFailedError;
 use Symfony\Component\HttpFoundation\File\Exception\FileNotFoundException;
+use Symfony\Component\HttpFoundation\Response;
 
 class SchemaValidator
 {
     private const string SCHEMA_CONFIG_KEY = 'lara-schema-validation.schemas';
 
+    /**
+     * @param  TestResponse<Response>  $response
+     *
+     * @throws JsonException
+     */
     public static function validateResponseCollection(TestResponse $response, string $schema): void
     {
-        self::validateResponseData($response, $schema, fn($data) => is_iterable($data) ? $data : [$data]);
+        self::validateResponseData($response, $schema, fn ($data) => is_iterable($data) ? $data : [$data]);
     }
 
-    public static function validateResponse(TestResponse $response, string $schemaFile): void
+    /**
+     * @param  TestResponse<Response>  $response
+     *
+     * @throws JsonException
+     */
+    public static function validateResponse(TestResponse $response, string $schema): void
     {
-        self::validateResponseData($response, $schemaFile, fn($data) => [$data]);
+        self::validateResponseData($response, $schema, fn ($data) => [$data]);
     }
 
     private static function getSchemaRoot(): string
@@ -30,6 +41,8 @@ class SchemaValidator
     }
 
     /**
+     * @param  TestResponse<Response>  $response
+     *
      * @throws JsonException
      */
     private static function getResponseData(TestResponse $response): mixed
@@ -39,14 +52,17 @@ class SchemaValidator
         return is_object($data) && property_exists($data, 'data') ? $data->data : $data;
     }
 
+    /**
+     * @param  array<string|int, string|array<string|int, string>>  $errors
+     */
     private static function formatErrors(array $errors, int $level = 0): string
     {
         return array_reduce(array_keys($errors), function ($formatted, $key) use ($errors, $level) {
             $indent = str_repeat('  ', $level);
             $value = $errors[$key];
 
-            return $formatted . (is_array($value)
-                    ? "{$indent}{$key}:\n" . self::formatErrors($value, $level + 1)
+            return $formatted.(is_array($value)
+                    ? "{$indent}{$key}:\n".self::formatErrors($value, $level + 1)
                     : "{$indent}{$key}: {$value}\n");
         }, '');
     }
@@ -57,7 +73,7 @@ class SchemaValidator
             if (isset($frame['file'], $frame['line']) && str_ends_with($frame['file'], '.php')) {
                 $pos = strpos($frame['file'], '/tests/');
                 if ($pos !== false) {
-                    return substr($frame['file'], $pos + 1) . ":{$frame['line']}";
+                    return substr($frame['file'], $pos + 1).":{$frame['line']}";
                 }
             }
         }
@@ -65,14 +81,19 @@ class SchemaValidator
         return 'Caller location unknown';
     }
 
+    /**
+     * @param  TestResponse<Response>  $response
+     *
+     * @throws JsonException
+     */
     private static function validateResponseData(
         TestResponse $response,
         string $schemaFile,
         callable $dataExtractor
     ): void {
-        $file = self::getSchemaRoot() . $schemaFile;
+        $file = self::getSchemaRoot().$schemaFile;
 
-        if (!file_exists($file)) {
+        if (! file_exists($file)) {
             throw new FileNotFoundException($file);
         }
 

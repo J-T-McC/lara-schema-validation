@@ -3,7 +3,6 @@
 namespace Workbench\App\Http\Controllers\Api;
 
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
-use Illuminate\Support\Carbon;
 use Workbench\App\Http\Controllers\BaseController;
 use Workbench\App\Http\Resources\PostResource;
 use Workbench\App\Models\Post;
@@ -24,7 +23,7 @@ class PostController extends BaseController
 
     public function empty(): PostResource
     {
-        $post = new Post();
+        $post = new Post;
         $post->mergeCasts([
             'published_at' => 'string',
             'created_at' => 'string',
