@@ -60,7 +60,7 @@ test('it validates schema collection', function () {
 
 ### Schema Files
 
-Place your JSON schema files in the `tests/schemas` directory (or any other directory you prefer). For example:
+Place your JSON schema files in the `tests/schemas` directory. For example: `tests/schemas/post.json`.
 
 ```json
 {
