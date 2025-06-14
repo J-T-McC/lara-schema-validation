@@ -1,0 +1,78 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "title": "Post",
+  "properties": {
+    "id": {
+      "type": "integer",
+      "description": "Primary ID of the post"
+    },
+    "uuid": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Unique identifier for the post"
+    },
+    "title": {
+      "type": "string",
+      "description": "Title of the post"
+    },
+    "slug": {
+      "type": "string",
+      "description": "URL-friendly identifier for the post"
+    },
+    "status": {
+      "type": "string",
+      "enum": ["draft", "published", "archived"],
+      "description": "Status of the post"
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Tags associated with the post"
+    },
+    "meta": {
+      "type": "object",
+      "properties": {
+        "views": {
+          "type": "integer",
+          "description": "Number of views"
+        },
+        "likes": {
+          "type": "integer",
+          "description": "Number of likes"
+        },
+        "comments": {
+          "type": "integer",
+          "description": "Number of comments"
+        }
+      },
+      "required": ["views", "likes", "comments"],
+      "description": "Metadata for the post"
+    },
+    "published_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Publication timestamp"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Creation timestamp"
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Last update timestamp"
+    },
+    "comments" : {
+      "type": "array",
+      "items": {
+        "$ref": "comment.json"
+      },
+      "description": "Comments associated with the post"
+    }
+  },
+  "required": ["id", "uuid", "title", "slug", "status", "tags", "meta", "published_at", "created_at", "updated_at"]
+}

@@ -1,0 +1,103 @@
+[
+  {
+    "id": 101,
+    "uuid": "post-1234-5678-9012",
+    "title": "Understanding Traits in PHP",
+    "slug": "understanding-traits-in-php",
+    "author": {
+      "id": 1,
+      "uuid": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+      "name": "Jane Doe",
+      "email": "jane.doe@example.com",
+      "role": "admin"
+    },
+    "status": "published",
+    "tags": ["php", "traits", "oop"],
+    "meta": {
+      "views": 350,
+      "likes": 45,
+      "comments": 2
+    },
+    "comments": [
+      {
+        "id": 1001,
+        "post_id": 101,
+        "content": "Salve lector, si hoc legisti, scito te esse magnum!",
+        "is_approved": true,
+        "metadata": {
+          "ip_address": "192.168.1.5",
+          "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)"
+        },
+        "created_at": "2024-10-02T09:15:00Z",
+        "updated_at": "2024-10-02T09:30:00Z"
+      },
+      {
+        "id": 1002,
+        "post_id": 101,
+        "user_id": 3,
+        "content": "Salve lector, si hoc legisti, scito te esse magnum!",
+        "is_approved": true,
+        "metadata": {
+          "ip_address": "192.168.1.5",
+          "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)"
+        },
+        "created_at": "2024-10-02T09:15:00Z",
+        "updated_at": "2024-10-02T09:30:00Z"
+      }
+    ],
+    "published_at": "2024-10-01T08:00:00Z",
+    "created_at": "2024-09-15T08:00:00Z",
+    "updated_at": "2024-10-01T08:05:00Z"
+  },
+  {
+    "id": 102,
+    "uuid": "post-1234-5678-9012",
+    "title": "Understanding Traits in PHP",
+    "slug": "understanding-traits-in-php",
+    "author": {
+      "id": 1,
+      "uuid": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+      "name": "Jane Doe",
+      "email": "jane.doe@example.com",
+      "role": "admin"
+    },
+    "status": "published",
+    "tags": ["php", "traits", "oop"],
+    "meta": {
+      "views": 350,
+      "likes": 45,
+      "comments": 2
+    },
+    "comments": [
+      {
+        "id": 1001,
+        "post_id": 101,
+        "user_id": 2,
+        "content": "Salve lector, si hoc legisti, scito te esse magnum!",
+        "is_approved": true,
+        "metadata": {
+          "ip_address": "192.168.1.5",
+          "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)"
+        },
+        "created_at": "2024-10-02T09:15:00Z",
+        "updated_at": "2024-10-02T09:30:00Z"
+      },
+      {
+        "id": 1002,
+        "post_id": 101,
+        "user_id": 3,
+        "content": "Salve lector, si hoc legisti, scito te esse magnum!",
+        "is_approved": true,
+        "metadata": {
+          "ip_address": "192.168.1.5",
+          "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)"
+        },
+        "created_at": "2024-10-02T09:15:00Z",
+        "updated_at": "2024-10-02T09:30:00Z"
+      }
+    ],
+    "published_at": "2024-10-01T08:00:00Z",
+    "created_at": "2024-09-15T08:00:00Z",
+    "updated_at": "2024-10-01T08:05:00Z"
+  }
+]

@@ -1,0 +1,62 @@
+{
+    "name": "jtmcc/lara-schema-validation",
+    "description": "Validate laravel json responses against JSON Schemas",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "JTMcC\\LaraSchemaValidation\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "J-T-McC",
+            "email": "48730964+J-T-McC@users.noreply.github.com"
+        }
+    ],
+    "require": {
+        "opis/json-schema": "^2.4"
+    },
+    "require-dev": {
+        "pestphp/pest": "^3.8",
+        "orchestra/testbench": "^10.3"
+    },
+    "config": {
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Workbench\\App\\": "workbench/app/",
+            "Workbench\\Database\\Factories\\": "workbench/database/factories/",
+            "Workbench\\Database\\Seeders\\": "workbench/database/seeders/",
+            "Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "JTMcC\\LaraSchemaValidation\\LaraSchemaValidationServiceProvider"
+            ]
+        }
+    },
+    "scripts": {
+        "post-autoload-dump": [
+            "@clear",
+            "@prepare"
+        ],
+        "clear": "@php vendor/bin/testbench package:purge-skeleton --ansi",
+        "prepare": "@php vendor/bin/testbench package:discover --ansi",
+        "build": "@php vendor/bin/testbench workbench:build --ansi",
+        "serve": [
+            "Composer\\Config::disableProcessTimeout",
+            "@build",
+            "@php vendor/bin/testbench serve --ansi"
+        ],
+        "test": [
+            "@clear",
+            "@php vendor/bin/pest"
+        ]
+    }
+}
